@@ -44,8 +44,8 @@ async function fetchMovieData() {
 }
 
 function truncateText(text, maxLength) {
-  if (text.length > 30) {
-    return text.slice(0, 30) + '...';
+  if (text.length > maxLength) {
+    return text.slice(0, maxLength) + '...';
   }
   return text;
 }
