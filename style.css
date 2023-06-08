@@ -72,7 +72,7 @@ body {
 }
 
 /* properties for the search button */
-#suc , #reloadButton{
+#suc {
     position: relative;
     left: 100px;
     text-align: center;
@@ -88,6 +88,15 @@ body {
 /* properties to change background on clicking a button */
 #reloadButton {
     width: 120px ;
+    position: relative;
+    left: 100px;
+    text-align: center;
+    font-weight: bolder;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    height: 30px;
+    border-radius: 5px;
+    box-shadow: 1px 1px 1px rgb(61, 55, 55);
+    border-color: rgb(227, 210, 210);
 }
 
 /* properties to set the search icon in right place */
