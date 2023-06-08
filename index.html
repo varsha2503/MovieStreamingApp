@@ -1,36 +1,43 @@
-<!DOCTYPE html>
+<!-- Movie Streamer -->
+
+<!DOCTYPE html>                                          
 <html lang="en">
 
-<head>
+<head>                                                    <!-- head starts  -->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VR Movies</title>
-    <link rel="stylesheet" href="style.css">
+    <title>VR Movies</title>                              <!-- browser will show VR Movies on tab opening -->
+    <link rel="stylesheet" href="style.css">              <!-- CSS style sheet is liked here -->
+    <!-- to link icons used for search icon , other side bar icons  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
 </head>
 
-<body>
+<body>                                                    <!-- body starts from here this part will we shown on users screen  -->
     <nav class="navbar">
-        <div class="toggle-btn" onclick="toggleSidebar()">
+
+        <div class="toggle-btn" onclick="toggleSidebar()">    <!-- 3 Bars to represent toggle button to open and close side bar  -->
             <span></span>
             <span></span>
             <span></span>
         </div>
+
         <div>
-            <img src="vr-removebg-preview.png" alt="" id="imgg">
-            <div class="logo">MOVIES</div>
+            <img src="vr-removebg-preview.png" alt="" id="imgg">         <!-- logo of the page  -->
+            <div class="logo">MOVIES</div>                               <!-- logo also contains this text  -->
         </div>
-        <div class="seachbar">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="icon">
-                <path
-                    d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 1 0-.7.7l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-5 0A4.5 4.5 0 1 1 14 9.5a4.48 4.48 0 0 1-3.5 4.5z" />
+
+        <div class="seachbar">                            <!-- search section containing search icon input text and search button  -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="icon">         <!-- to search icon  -->
+                <path d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 1 0-.7.7l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-5 0A4.5 4.5 0 1 1 14 9.5a4.48 4.48 0 0 1-3.5 4.5z" />
             </svg>
-            <input type="text" id="search" placeholder="search something">
-            <input type="button" id="sub" value="Search">
+            <input type="text" id="sear" placeholder="search something">       <!-- user will give input in this and movie will be searched  -->
+            <input type="button" id="suc" value="Search">                      <!-- search button  -->
         </div>
+
     </nav>
-    <div class="sidebar">
+
+    <div class="sidebar">                                  <!-- side bar to get to other things  -->
         <div class="menu"></div>
         <a href="#" class="link"><i class="fa-solid fa-circle-user"></i> My Space</a>
         <a href="#" class="link" id="home"><i class="fa-solid fa-house-chimney"></i> Home</a>
@@ -40,25 +47,16 @@
         <a href="#" class="link"><i class="fa-solid fa-clock-rotate-left"></i> History</a>
         <button id="add">+ADD</button>
     </div>
-    
-    <div id="poster"></div>
 
-    <div class="container">
-        <div class="box"></div>
-        <div class="box"></div>
-        <div class="box"></div>
-        <div class="box"></div>
-        <div class="box"></div>
-        <div class="box"></div>
-        <div class="box"></div>
-        <div class="box"></div>
-        <div class="box"></div>
-        <div class="box"></div>
-        <div class="box"></div>
-        <div class="box"></div>
-    </div>
+    <div id="poster"></div>                                <!-- when movie is searched this place is used  -->
 
-    <script src="script.js"></script>
-</body>
+    <div class="container"></div>                          <!-- this container contains the part of body where movies will be shown in boxes -->
+
+    <footer class="foot">
+        <i class="fa-solid fa-copyright"></i> Made by <strong>VARSHA</strong>
+    </footer>
+
+    <script src="script.js"></script>                      <!-- Java Script is added here show that if this takes more time to complile frontend is compiled already -->
+</body>   
 
 </html>
