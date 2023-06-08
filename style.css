@@ -9,7 +9,9 @@
 }
 
 body {
-    background: linear-gradient(to bottom right, aqua 0%, blueviolet 50%, blueviolet 50%, plum 100%);
+    /* background: linear-gradient(to bottom right, aqua 0%, blueviolet 50%, blueviolet 50%, plum 100%); */
+    background: url("https://source.unsplash.com/random/1800×2700/?movie-poster");
+    background-size: cover;
 }
 
 .navbar {
@@ -27,6 +29,10 @@ body {
     left: 100px;
     height: 70px;
     display: inline-block;
+    border: 4px solid black ;
+    border-radius: 5px ;
+    background: linear-gradient(to bottom right, aqua 0%, plum 100%);
+    /* box-shadow: 2px 2px 1px rgb(255, 255, 255); */
 }
 
 .logo {
@@ -37,10 +43,16 @@ body {
     margin-left: 80px;
     left: 10px;
     bottom: 20px;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif ;
+    background: linear-gradient(to bottom right, aqua 0%, plum 100%);
+    padding-right: 10px ;
+    border: 4px solid black ;
+    border-radius: 5px ;
+    border-left: none ;
+    /* box-shadow: 5px 5px 1px rgb(255, 255, 255); */
 }
 
-#search {
+#sear {
     position: relative;
     left: 100px;
     text-align: center;
@@ -51,7 +63,7 @@ body {
     border-radius: 5px;
 }
 
-#sub {
+#suc {
     position: relative;
     left: 100px;
     text-align: center;
@@ -159,7 +171,7 @@ body {
 
 .box {
     border: 5px solid black;
-    background-color: #f1f1f1;
+    background-color: #ffffff;
     padding: 20px;
     text-align: center;
     height: 400px;
@@ -173,7 +185,17 @@ body {
 
 @media (max-width: 800px) {
     .navbar {
-        height: 200px;
+        height: 150px;
         border-bottom: 3px solid black;
     }
+    .sidebar {
+        margin-top: 50px ;
+    }
+}
+
+#poster p {
+  font-size: 2em;
+  color: black;
+  text-align: center;
+  justify-content: center;
 }
