@@ -72,7 +72,7 @@ body {
 }
 
 /* properties for the search button */
-#suc {
+#suc , #reloadButton{
     position: relative;
     left: 100px;
     text-align: center;
@@ -83,6 +83,11 @@ body {
     border-radius: 5px;
     box-shadow: 1px 1px 1px rgb(61, 55, 55);
     border-color: rgb(227, 210, 210);
+}
+
+/* properties to change background on clicking a button */
+#reloadButton {
+    width: 120px ;
 }
 
 /* properties to set the search icon in right place */
