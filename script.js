@@ -76,3 +76,34 @@ function displayMovieData(movies) {
 }
 
 fetchMovieData();
+
+const getPoster = function() {
+
+  const film = document.getElementById('sear').value ;
+    fetch(`https://api.themoviedb.org/3/search/movie?api_key=7c69bc4fa25a0ddf37153adac20be8ff&query=${film}`)
+      .then(response => response.json())
+      .then(data => {
+        if (data.results.length > 0) {
+          const title = data.results[0].title;
+          const posterPath = data.results[0].poster_path;
+          const img = document.createElement('img');
+          img.src = `http://image.tmdb.org/t/p/w500/${posterPath}`;
+          poster.innerHTML = `<p>Your search found: <strong>${title}</strong></p>`;
+          poster.appendChild(img);
+          img.style.height = '500px' ;
+          img.style.marginLeft = '600px' ;
+        }
+      })
+      .catch(error => {
+        console.error('Error fetching movie data:', error);
+      });
+
+  return false;
+};
+
+document.getElementById('suc').addEventListener('click', getPoster);
+document.getElementById('sear').addEventListener('keyup', function(event) {
+  if (event === 13) {
+    getPoster();
+  }
+});
