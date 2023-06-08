@@ -250,3 +250,21 @@ body {
         margin-top: 50px;
     }
 }
+
+/* condition to make navbar and side bar responsive when screen size increases and decreases */
+@media (max-width: 500px) {
+    .navbar {
+      flex-direction: column;
+      height: 200px ;
+      align-items: center;
+    }
+
+    #reloadButton {
+        position:  relative ;
+        left: 180px ;
+    }
+  
+    #sear {
+      margin-bottom: 10px;
+    }
+  }
