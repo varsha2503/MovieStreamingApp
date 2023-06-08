@@ -183,7 +183,7 @@ body {
     margin-top: 50px;
     margin-bottom: 50px ;
     display: grid;
-     grid-template-columns: repeat(auto-fit, minmax(300px, 0.7fr));    /* to make website responsive */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 0.7fr));    /* to make website responsive */
     grid-row-gap: 80px;
     grid-column-gap: 50px;
     transition: transform 0.3s ease-in-out;
@@ -211,6 +211,7 @@ body {
     color: black;
     text-align: center;
     justify-content: center;
+    /* border-bottom: 5px solid black ; */
 }
 
 /* properties for the footer */
