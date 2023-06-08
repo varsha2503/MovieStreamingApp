@@ -1,4 +1,4 @@
-let currentPage = 1 ;               // variables to maintain scrolling and to check search is performed or not and to check up and down scroll
+let currentPage = 1;               // variables to maintain scrolling and to check search is performed or not and to check up and down scroll
 let searchPerformed = false;
 let previousScrollTop = 0;
 
@@ -64,20 +64,20 @@ function displayMovieData(movies) {
   container.innerHTML = '';
 
   movies.forEach((movie) => {             // do this for every movie in api 
-    const box = document.createElement('div');
+    const box = document.createElement('div');            // to move movie data to box of container
     box.classList.add('box');
 
-    const title = document.createElement('h2');
-    title.textContent = truncateText(movie.title, 30);
+    const title = document.createElement('h2');          // for title 
+    title.textContent = truncateText(movie.title, 30);   // to make title shoter
 
 
-    const poster = document.createElement('img');
+    const poster = document.createElement('img');        // movie poster size and fetching
     poster.src = IMG_URL + movie.poster_path;
     poster.alt = movie.title;
     poster.style.width = '228px';
     poster.style.height = '303px';
 
-    box.appendChild(poster);
+    box.appendChild(poster); 
     box.appendChild(title);
 
     container.appendChild(box);
@@ -97,12 +97,12 @@ function handleScroll() {
     if (searchPerformed) {
       const poster = document.getElementById('poster');
       if (scrollTop + clientHeight >= scrollHeight - 5) {
-        poster.innerHTML = ''; // Remove the poster
+        poster.innerHTML = '';           // Remove the poster
         currentPage++;
         fetchMovieData();
       }
     } else {
-      // Continue with infinite scrolling if no search has been performed
+      // continue to get more movies on scrolling if no search has been performed
       if (scrollTop + clientHeight >= scrollHeight - 5) {
         currentPage++;
         fetchMovieData();
@@ -110,40 +110,72 @@ function handleScroll() {
     }
   }
 
-  previousScrollTop = scrollTop; // Update the previous scroll position
+  previousScrollTop = scrollTop;                    // update the previous scroll position
 }
 
 // function to get searched movie
-const getPoster = function() {
-  const film = document.getElementById('sear').value ;
-    fetch(`https://api.themoviedb.org/3/search/movie?api_key=7c69bc4fa25a0ddf37153adac20be8ff&query=${film}`)
-      .then(response => response.json())
-      .then(data => {
-        if (data.results.length > 0) {
-          const title = data.results[0].title;
-          const posterPath = data.results[0].poster_path;
-          const img = document.createElement('img');                 // to get the movie poster we used img
-          searchPerformed = true ;
+const getPoster = function () {
+  const film = document.getElementById('sear').value;
+  fetch(`https://api.themoviedb.org/3/search/movie?api_key=7c69bc4fa25a0ddf37153adac20be8ff&query=${film}`)
+    .then(response => response.json())
+    .then(data => {
+      if (data.results.length > 0) {
+        const poster = document.getElementById('poster');
+        poster.innerHTML = '';                    // to clear previous results searched to get new one
+
+        const container = document.createElement('div');
+        container.className = 'container';        
+        container.style.marginBottom = '100px';
+
+        for (let i = 0; i < data.results.length; i++) {              // loop to fetch all search results related 
+          const title = data.results[i].title;
+          const posterPath = data.results[i].poster_path;
+
+          const box = document.createElement('div');
+          box.className = 'box';
+
+          const img = document.createElement('img');                 // image to fetch movie poster
           img.src = `http://image.tmdb.org/t/p/w500/${posterPath}`;
-          poster.innerHTML = `<p>Your search found: <strong>${title}</strong></p>`;
-          poster.appendChild(img);                                  // to get the movie poster 
-          img.style.height = '500px' ;
-          img.style.marginLeft = '600px' ;
+          img.style.height = '280px';
+
+          const titleElement = document.createElement('p');          // for title and its properties
+          titleElement.innerHTML = `<strong>${title}</strong>`;
+          titleElement.textContent = truncateText(title, 25);        // for long title making it sort 
+
+          box.appendChild(img);                        // puts title and movie poster in box 
+          box.appendChild(titleElement);
+          container.appendChild(box);
+
         }
-      })
-      .catch(error => {
-        console.error('Error fetching movie data:', error);
-      });
+
+        poster.appendChild(container);                  // puts the images in container in boxes
+        searchPerformed = true;                         // make searchPerformed true so that it will be removed when moved to end of website
+
+        const message = document.createElement('p');          // to add text after the search results are over and its properties
+        message.textContent = 'End of search results.';
+        message.style.marginBottom = '100px' ;
+        message.style.background = 'linear-gradient(to bottom right, aqua 0%, blueviolet 50%, blueviolet 50%, plum 100%)' ;
+        message.style.borderTop = '5px solid black ' ;
+        message.style.borderBottom = '5px solid black ' ;
+        message.style.padding = '10px' ;
+        poster.appendChild(message);
+
+      }
+    })
+    .catch(error => {                          // error when something goes wrong while fetching api for searching 
+      console.error('Error fetching movie data:', error);
+    });
 
   return false;
 };
 
-// suc is id for seach button and sear is id for search input text bar
+// suc is id of search button 
+// sear is id of search input text bar  
 document.getElementById('suc').addEventListener('click', getPoster);
-document.getElementById('sear').addEventListener('keyup', function(event) {
+document.getElementById('sear').addEventListener('keyup', function (event) {
   if (event === 13) {
     getPoster();
   }
 });
 
-window.addEventListener('scroll', handleScroll);
+window.addEventListener('scroll', handleScroll);   // calling handleScroll funaction when scolling is done
