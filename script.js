@@ -179,3 +179,8 @@ document.getElementById('sear').addEventListener('keyup', function (event) {
 });
 
 window.addEventListener('scroll', handleScroll);   // calling handleScroll funaction when scolling is done
+
+// function to change background on clicking the button change backdrop 
+document.getElementById('reloadButton').addEventListener('click', function() {
+  location.reload();
+});
