@@ -1,3 +1,4 @@
+/* Inially everthing have these properties */
 * {
     margin: 0;
     padding: 0;
@@ -8,12 +9,14 @@
     outline: none;
 }
 
+/* Body background will be changed everytime the site is loaded */
 body {
     /* background: linear-gradient(to bottom right, aqua 0%, blueviolet 50%, blueviolet 50%, plum 100%); */
     background: url("https://source.unsplash.com/random/1800×2700/?movie-poster");
     background-size: cover;
 }
 
+/* properties for the navbar */
 .navbar {
     position: relative;
     height: 100px;
@@ -22,19 +25,23 @@ body {
     grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
     align-items: center;
     padding: 0 2.5px;
+    background: linear-gradient(to bottom right, aqua 0%, blueviolet 50%, blueviolet 50%, plum 100%);
 }
 
+/* properties for logo image */
 #imgg {
     position: relative;
     left: 100px;
     height: 70px;
     display: inline-block;
-    border: 4px solid black ;
-    border-radius: 5px ;
-    background: linear-gradient(to bottom right, aqua 0%, plum 100%);
+    border: 4px solid black;
+    border-right: none ;
+    /* border-radius: 5px;
+    background: linear-gradient(to bottom right, aqua 0%, plum 100%); */
     /* box-shadow: 2px 2px 1px rgb(255, 255, 255); */
 }
 
+/* properties for logo text */
 .logo {
     position: relative;
     font-weight: bolder;
@@ -43,15 +50,16 @@ body {
     margin-left: 80px;
     left: 10px;
     bottom: 20px;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif ;
-    background: linear-gradient(to bottom right, aqua 0%, plum 100%);
-    padding-right: 10px ;
-    border: 4px solid black ;
-    border-radius: 5px ;
-    border-left: none ;
+    /* font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; */
+    /* background: linear-gradient(to bottom right, aqua 0%, plum 100%); */
+    padding-right: 10px;
+    /* border: 4px solid black;
+    border-radius: 5px;
+    border-left: none; */
     /* box-shadow: 5px 5px 1px rgb(255, 255, 255); */
 }
 
+/* properties of search input */
 #sear {
     position: relative;
     left: 100px;
@@ -63,6 +71,7 @@ body {
     border-radius: 5px;
 }
 
+/* properties for the search button */
 #suc {
     position: relative;
     left: 100px;
@@ -76,6 +85,7 @@ body {
     border-color: rgb(227, 210, 210);
 }
 
+/* properties to set the search icon in right place */
 #icon {
     height: 30px;
     position: relative;
@@ -83,6 +93,7 @@ body {
     top: 15px;
 }
 
+/* properties for the side bar */
 .sidebar {
     position: absolute;
     top: 100px;
@@ -95,10 +106,12 @@ body {
     transition: transform 0.3s ease-in-out;
 }
 
+/* properties for side bar to open and close it */
 .sidebar.active {
     transform: translateX(0);
 }
 
+/* properties for the toggle-btn */
 .toggle-btn {
     position: absolute;
     top: 35px;
@@ -121,6 +134,7 @@ body {
     transform: translateY(-50%);
 }
 
+/* properties for the side menu links */
 .link {
     display: block;
     width: 100%;
@@ -131,20 +145,24 @@ body {
     color: black;
 }
 
+/* properties when side bar mennu is hovered it pops up and background also changes */
 .link:hover {
     /* background-color: rgba(88, 72, 88, 0.582); */
     background-color: white;
     font-size: 25px;
 }
 
+/* home link properties */
 #home {
     background-color: rgb(129, 68, 251);
 }
 
+/* home link while hover on it */
 #home:hover {
     background-color: white;
 }
 
+/* properties of the add button */
 #add {
     position: relative;
     top: 100px;
@@ -158,17 +176,20 @@ body {
     box-shadow: 2px 2px 1px rgb(108, 99, 99);
 }
 
+/* properties of bosy part that will conatian the movie posters */
 .container {
     margin-left: 80px;
     margin-right: 70px;
     margin-top: 50px;
+    margin-bottom: 50px ;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 0.7fr));
+     grid-template-columns: repeat(auto-fit, minmax(300px, 0.7fr));    /* to make website responsive */
     grid-row-gap: 80px;
     grid-column-gap: 50px;
     transition: transform 0.3s ease-in-out;
 }
 
+/* properties of place where posters are shown */
 .box {
     border: 5px solid black;
     background-color: #ffffff;
@@ -177,25 +198,40 @@ body {
     height: 400px;
 }
 
+/* properties while hover on poster of movie */
 .box img:hover {
     position: relative;
     top: 25.5px;
     transform: scale(1.3);
 }
 
+/* properties for the poster which will be shown when movie is searched */
+#poster p {
+    font-size: 2em;
+    color: black;
+    text-align: center;
+    justify-content: center;
+}
+
+/* properties for the footer */
+.foot {
+    border-top: 5px solid black ;
+    padding: 20px ;
+    text-align : center ;
+    text-decoration: underline ;
+    font-size: 30px ;
+    padding-bottom: 35px ;
+    background: linear-gradient(to bottom right, aqua 0%, blueviolet 50%, blueviolet 50%, plum 100%);
+}
+
+/* condition to make navbar and side bar responsive when screen size increases and decreases */
 @media (max-width: 800px) {
     .navbar {
         height: 150px;
         border-bottom: 3px solid black;
     }
-    .sidebar {
-        margin-top: 50px ;
-    }
-}
 
-#poster p {
-  font-size: 2em;
-  color: black;
-  text-align: center;
-  justify-content: center;
+    .sidebar {
+        margin-top: 50px;
+    }
 }
