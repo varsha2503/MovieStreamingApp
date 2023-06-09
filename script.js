@@ -1,6 +1,5 @@
-let currentPage = 1;               // variables to maintain scrolling and to check search is performed or not and to check up and down scroll
+let currentPage = 1;               // variables to maintain scrolling and to check search is performed or not 
 let searchPerformed = false;
-let previousScrollTop = 0;
 
 // function to maintain site when side bar is closed or open
 function toggleSidebar() {
@@ -22,7 +21,7 @@ function toggleSidebar() {
     container.style.gridColumnGap = '60px';
     container.style.transition = 'transform 0.3s ease-in-out';
   } else {                // when the side bar is closed then the container properties
-    container.style.marginLeft = '60px';
+    container.style.marginLeft = '90px';
     container.style.width = '95%';
     container.style.marginTop = '50px0';
     container.style.display = 'grid';
@@ -45,6 +44,7 @@ async function fetchMovieData() {
     const response = await fetch(`${API_URL}&page=${currentPage}`);
     const data = await response.json();
     displayMovieData(data.results);
+
   } catch (error) {
     console.error('Error fetching movie data:', error);
   }
@@ -77,7 +77,7 @@ function displayMovieData(movies) {
     poster.style.width = '228px';
     poster.style.height = '303px';
 
-    box.appendChild(poster); 
+    box.appendChild(poster);
     box.appendChild(title);
 
     container.appendChild(box);
@@ -87,7 +87,7 @@ function displayMovieData(movies) {
 // calling fetch movie data to get the data on screen
 fetchMovieData();
 
-// function to load more movies when the end of website is reached
+// function to remove searched results when next or previous button is pressed and it also handdles when page is scrolled when something is searched 
 function handleScroll() {
   const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
 
@@ -95,23 +95,17 @@ function handleScroll() {
   if (scrollTop > previousScrollTop) {
     // to check if a search has been performed and remove the poster
     if (searchPerformed) {
-      const poster = document.getElementById('poster');
-      if (scrollTop + clientHeight >= scrollHeight - 5) {
-        poster.innerHTML = '';           // Remove the poster
+        poster.innerHTML = '';           // remove the poster
         currentPage++;
-        fetchMovieData();
-      }
     } else {
       // continue to get more movies on scrolling if no search has been performed
       if (scrollTop + clientHeight >= scrollHeight - 5) {
         currentPage++;
-        fetchMovieData();
       }
     }
   }
-
-  previousScrollTop = scrollTop;                    // update the previous scroll position
 }
+
 
 // function to get searched movie
 const getPoster = function () {
@@ -124,7 +118,7 @@ const getPoster = function () {
         poster.innerHTML = '';                    // to clear previous results searched to get new one
 
         const container = document.createElement('div');
-        container.className = 'container';        
+        container.className = 'container';
         container.style.marginBottom = '100px';
 
         for (let i = 0; i < data.results.length; i++) {              // loop to fetch all search results related 
@@ -153,11 +147,11 @@ const getPoster = function () {
 
         const message = document.createElement('p');          // to add text after the search results are over and its properties
         message.textContent = 'End of search results.';
-        message.style.marginBottom = '100px' ;
-        message.style.background = 'linear-gradient(to bottom right, aqua 0%, blueviolet 50%, blueviolet 50%, plum 100%)' ;
-        message.style.borderTop = '5px solid black ' ;
-        message.style.borderBottom = '5px solid black ' ;
-        message.style.padding = '10px' ;
+        message.style.marginBottom = '100px';
+        message.style.background = 'linear-gradient(to bottom right, aqua 0%, blueviolet 50%, blueviolet 50%, plum 100%)';
+        message.style.borderTop = '5px solid black ';
+        message.style.borderBottom = '5px solid black ';
+        message.style.padding = '10px';
         poster.appendChild(message);
 
       }
@@ -181,6 +175,39 @@ document.getElementById('sear').addEventListener('keyup', function (event) {
 window.addEventListener('scroll', handleScroll);   // calling handleScroll funaction when scolling is done
 
 // function to change background on clicking the button change backdrop 
-document.getElementById('reloadButton').addEventListener('click', function() {
+document.getElementById('reloadButton').addEventListener('click', function () {
   location.reload();
 });
+
+
+// function to fetch more movies when next button is clicked
+function goToNextPage() {
+  currentPage++;
+  if (searchPerformed) {
+    const poster = document.getElementById('poster');
+    poster.innerHTML = ''; // remove the search results
+  }
+  fetchMovieData();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+const nextButton = document.getElementById('nextButton'); 
+nextButton.addEventListener('click', goToNextPage);
+
+
+// function to get to previous movies when previous button is clicked
+function goToPreviousPage() {
+  if (currentPage > 1) {
+    currentPage--;
+    if (searchPerformed) {
+      const poster = document.getElementById('poster');
+      poster.innerHTML = ''; // remove the search results
+    }
+    fetchMovieData();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+}
+
+const prevButton = document.getElementById('prevButton');
+prevButton.addEventListener('click', goToPreviousPage);
+
