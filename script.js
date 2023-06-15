@@ -2,7 +2,7 @@ let currentPage = 1;               // variables to maintain scrolling and to che
 let searchPerformed = false;
 
 // function to maintain site when side bar is closed or open
-function toggleSidebar() {
+const toggleSidebar = () => {
   const sidebar = document.querySelector('.sidebar');
   const container = document.querySelector('.container');
 
@@ -51,7 +51,7 @@ async function fetchMovieData() {
 }
 
 // function show that if the length of the movie title is very large only some portion of the title will be shown 
-function truncateText(text, maxLength) {
+const truncateText = (text, maxLength) => {
   if (text.length > maxLength) {
     return text.slice(0, maxLength) + '...';
   }
@@ -59,7 +59,7 @@ function truncateText(text, maxLength) {
 }
 
 // function to display movies as 1st movie poster and then movie title
-function displayMovieData(movies) {
+const displayMovieData = (movies) => {
   const container = document.querySelector('.container');
   container.innerHTML = '';
 
@@ -88,7 +88,7 @@ function displayMovieData(movies) {
 fetchMovieData();
 
 // function to remove searched results when next or previous button is pressed and it also handdles when page is scrolled when something is searched 
-function handleScroll() {
+const handleScroll = () => {
   const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
 
   // to check if the scroll position has increased
@@ -181,7 +181,7 @@ document.getElementById('reloadButton').addEventListener('click', function () {
 
 
 // function to fetch more movies when next button is clicked
-function goToNextPage() {
+const goToNextPage = () => {
   currentPage++;
   if (searchPerformed) {
     const poster = document.getElementById('poster');
@@ -196,7 +196,7 @@ nextButton.addEventListener('click', goToNextPage);
 
 
 // function to get to previous movies when previous button is clicked
-function goToPreviousPage() {
+const goToPreviousPage = () => {
   if (currentPage > 1) {
     currentPage--;
     if (searchPerformed) {
